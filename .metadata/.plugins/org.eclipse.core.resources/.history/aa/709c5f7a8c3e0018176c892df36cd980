@@ -1,0 +1,18 @@
+package com.dmk.models;
+
+import java.io.Serializable;
+
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+
+@Entity
+public class Produto implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 369105332639487699L;
+	
+	@Generated
+	private Long id; 
+}

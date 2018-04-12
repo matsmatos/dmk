@@ -1,0 +1,10 @@
+package com.dmk.models;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Produto implements Serializable{
+	
+}

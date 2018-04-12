@@ -1,0 +1,5 @@
+package com.dmk.response;
+
+public class Response {
+
+}

@@ -1,0 +1,16 @@
+package com.dmk.services;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.dmk.models.Produto;
+
+@Service
+public class ProdutoSevice {
+	public Optional<Produto> buscaProduto() {
+		Produto produto = new Produto();
+
+		return produto;
+	}
+}
