@@ -1630,3 +1630,6 @@ org.eclipse.jface.text.BadLocationException: null
 2018-04-13 18:15:54,487 [Worker-385] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2018-04-13 18:15:54,490 [Worker-385] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2018-04-13 18:15:54,491 [Worker-385] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-04-13 18:30:46,278 [Worker-391] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-04-13 18:30:46,278 [Worker-391] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-04-13 18:30:46,279 [Worker-391] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource

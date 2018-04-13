@@ -35,7 +35,7 @@ public class ProdutoController {
 		Response<Produto> response = new Response<Produto>();
 		Optional<Produto> produto = produtoService.buscaProduto(id);
 
-		if (!produto.isPresent()) {
+		if (produto.isPresent()) {
 			log.info("Produto não encontrado para o ID: {}", id);
 			response.getErrors().add("Produto não encontrado para o ID " + id);
 			return ResponseEntity.badRequest().body(response);
