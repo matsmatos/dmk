@@ -1,0 +1,8 @@
+package com.dmk.repositories;
+
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
+public class ProdutoRepository JpaRepository<Produto, Long>{
+
+}

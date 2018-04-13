@@ -1,0 +1,12 @@
+package com.dmk.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.dmk.models.Produto;
+
+@Transactional
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
+
+	void save(Produto produto);
+}

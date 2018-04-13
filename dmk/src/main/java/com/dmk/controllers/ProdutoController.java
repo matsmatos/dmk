@@ -3,10 +3,11 @@ package com.dmk.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,18 +46,35 @@ public class ProdutoController {
 	}
 
 	@GetMapping(value = "/produtos")
-	public ResponseEntity<List<Produto>> buscarProdutos() {
+	public ResponseEntity<Response<Optional<List<Produto>>>> buscarProdutos() {
 		log.info("Buscando produto");
-		// Response<Produto> response = new Response<Produto>();
-		List<Produto> produto = produtoService.buscaProdutos();
+		Response<Optional<List<Produto>>> response = new Response<Optional<List<Produto>>>();
+		Optional<List<Produto>> produto = produtoService.buscaProdutos();
 
-		if (produto.isEmpty()) {
+		if (!produto.isPresent()) {
 			log.info("Produtos não encontrados");
-			// response.getErrors().add("Produto não encontrados");
-			return ResponseEntity.badRequest().body(produto);
+			return ResponseEntity.badRequest().body(response);
 		}
-		// response.setData(zproduto.get());
-		return new ResponseEntity<List<Produto>>(produto, HttpStatus.OK);
+		response.setData(produto);
+		return ResponseEntity.ok(response);
+	}
+
+	/**
+	 * método de parse para json
+	 */
+	public JSONObject toJson(List<Produto> produtos) {
+
+		JSONObject json = new JSONObject();
+
+		try {
+			json.put("Data", produtos);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return json;
 
 	}
+
 }

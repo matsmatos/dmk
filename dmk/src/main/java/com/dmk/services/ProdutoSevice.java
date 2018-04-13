@@ -17,10 +17,9 @@ public class ProdutoSevice {
 		return Optional.ofNullable(produto);
 	}
 
-	public List<Produto> buscaProdutos() {
+	public Optional<List<Produto>> buscaProdutos() {
 		// TODO Auto-generated method stub
 		List<Produto> produtos = new ArrayList<>();
-
 		for (long i = 0; i < 10; i++) {
 			Produto produto = new Produto();
 			produto.setId(i);
@@ -28,7 +27,8 @@ public class ProdutoSevice {
 			produto.setValor(new BigDecimal(20));
 			produtos.add(produto);
 		}
+		Optional<List<Produto>> lista = Optional.of(produtos);
 
-		return (produtos);
+		return (lista);
 	}
 }
