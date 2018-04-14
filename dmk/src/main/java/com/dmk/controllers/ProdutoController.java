@@ -59,22 +59,4 @@ public class ProdutoController {
 		return ResponseEntity.ok(response);
 	}
 
-	/**
-	 * método de parse para json
-	 */
-	public JSONObject toJson(List<Produto> produtos) {
-
-		JSONObject json = new JSONObject();
-
-		try {
-			json.put("Data", produtos);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return json;
-
-	}
-
 }
