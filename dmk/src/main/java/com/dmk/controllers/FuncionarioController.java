@@ -1,12 +1,14 @@
 package com.dmk.controllers;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +29,7 @@ public class FuncionarioController {
 	@Autowired
 	private FuncionarioSevice funcionarioService;
 
-	@PostMapping(value = "/{funcionario}")
+	@PostMapping()
 	public ResponseEntity<Response<Funcionario>> criarFuncionario(@RequestBody Funcionario funcionario) {
 
 		Response<Funcionario> response = new Response<Funcionario>();
@@ -40,6 +42,24 @@ public class FuncionarioController {
 		}
 
 		response.setData(funcionario1.get());
+		return ResponseEntity.ok(response);
+
+	}
+
+	@GetMapping
+	public ResponseEntity<Response<List<Funcionario>>> listaFuncionario() {
+
+		Response<List<Funcionario>> response = new Response<>();
+		Optional<List<Funcionario>> lista = this.funcionarioService.listaFuncionario();
+
+		if (lista.get().isEmpty()) {
+			log.info("Lista Vazia");
+			response.getErrors().add("Lista Vazia");
+			return ResponseEntity.badRequest().body(response);
+		}
+
+		response.setData(lista.get());
+
 		return ResponseEntity.ok(response);
 
 	}
